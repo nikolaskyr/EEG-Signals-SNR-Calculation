@@ -1,0 +1,121 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wenneker Article
+% LaTeX Template
+% Version 2.0 (28/2/17)
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Vel (vel@LaTeXTemplates.com)
+% Frits Wenneker
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt, a4paper, onecolumn]{article} % 10pt font size (11 and 12 also possible), A4 paper (letterpaper for US letter) and two column layout (remove for one column)
+\usepackage{textgreek}
+\setlength{\parskip}{\baselineskip}
+%\setlength{\parindent}{5pt}
+\input{structure.tex} % Specifies the document structure and loads requires packages
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE INFORMATION
+%----------------------------------------------------------------------------------------
+
+
+\title{Investigation of the SNR Wall on Conscious EEG Signals} % The article title
+
+\author{
+	\authorstyle{Bernd Porr\textsuperscript{1} and Nikolas Kyriacou\textsuperscript{2}} % Authors
+	\newline\newline % Space before institutions
+	\textsuperscript{1}\institution{Project Advisor}\\
+	\textsuperscript{2}\institution{MSc Student}
+}
+
+% Example of a one line author/institution relationship
+%\author{\newauthor{John Marston} \newinstitution{Universidad Nacional Autónoma de México, Mexico City, Mexico}}
+
+%\date{\today} % Add a date here if you would like one to appear underneath the title block, use \today for the current date, leave empty for no date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+%\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+%
+%\includegraphics[width=\textwidth]{Figures/Univ_Logo.jpg}
+\maketitle % Print the title
+
+\thispagestyle{firstpage} % Apply the page style for the first page (no headers and footers)
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+%\lettrineabstract{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce maximus nisi ligula. Morbi laoreet ex ligula, vitae lobortis purus mattis vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec ac metus ut turpis mollis placerat et nec enim. Duis tristique nibh maximus faucibus facilisis. Praesent in consequat leo. Maecenas condimentum ex rhoncus, elementum diam vel, malesuada ante.}
+\newpage
+\begin{abstract}
+Brain Computer Interfaces (BCI) are closed loop systems used to control the operation of devices such as a wheelchair, or a robot arm, as well as in games as the user interface. The ability of a BCI system in detecting correctly the user’s intent depends on parameters such as the classification algorithm, the number and position of EEG electrodes used and the frequency bands examined. The aim of this project is to investigate the ability of a BCI system to detect EEG signals, recorded with the use of a single electrode attached on the Fp1 position. The frequency band examined is the alpha band (8Hz to 12Hz) with more emphasis at the 10Hz peaks.
+
+
+A number of experiments were devised to be conducted with the help of a number of willing persons acting as the subjects. This however, requires a prior approval by the Ethics Committee of the University. Because this approval was not granted on time, the signals used for the analysis of the EEG activity are taken from EEG recordings of the author of this report only. For the purpose of this project the conscious signal is considered to be the EEG signal recorded during the time that the subject is concentrating on the mental activity specified by the experiment. The EEG background noise is the EEG signal recorded when the subject is relaxed. The subject was instructed to avoid any movements that could create artefacts. 
+
+
+The spectrum of the recorded signals was examined in order to investigate the behaviour of the 10Hz peaks. From the processed EEG signals it was verified that the 10Hz are indeed present, while the frequency of the peaks shifts slightly between 9Hz and 11Hz. Furthermore, it was observed that the power of these peaks varies according to the mental effort of the subject. The SNR of the recorded signals was then calculated and compared to threshold noise levels called the noise walls. The values of this SNR noise walls were computed in another project conducted 2018. The investigation of the SNR showed that the calculated SNR was higher than the “relax” and the “Sudoku” SNR walls, while It was lower for the “eye blinking” artefact, thus the investigated BCI system can detect the EEG signals, while care must be  taken in handling artefacts.
+
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\newpage
+\section*{ACKNOWLEDGEMENTS}
+I would like express my thanks and gratitude towards my project advisor Dr. Bernd Porr, for his guidance and assistance throughout the implementation of the work of this project. I found his views and suggestions on the subject incredibly interesting and useful. 
+\newpage
+\tableofcontents % Prints the main table of contents
+\newpage
+\listoffigures % Prints the list of figures
+
+%\mainmatter % Begin numeric (1,2,3...) page numbering
+\newpage
+\input{introduction}
+
+\newpage
+\input{related}
+
+\newpage
+\input{methodology}
+
+\newpage
+\input{results}
+
+\newpage
+\input{conclusions}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+\newpage
+\section{Bibliography}
+\printbibliography%[title={Bibliography}] % Print the bibliography, section title in curly brackets
+%\bibliographystyle{plain}
+
+%\bibliography{references,acsac06-refs,costas,extra,ddm,tpds_ddm}
+%\bibliography{example}
+%----------------------------------------------------------------------------------------
+
+\end{document}
