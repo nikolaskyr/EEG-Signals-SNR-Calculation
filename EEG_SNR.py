@@ -77,7 +77,7 @@ def Calc_SNR(noise_var,start_task,end_task,start_signal,end_signal,segment_size,
     return task_snr
 
 fsampl = 1000  #Sampling frequency
-Nvar_all =  Noise_var_all(0,7,1500,2500)    
+Nvar_all =  Noise_var_all(0,7,1500,2500)  #Relaxed period from 1500ms to 2500ms   
 Nvar_max = Noise_var_max(Nvar_all) 
 Nvar_min = Noise_var_min(Nvar_all)       
 rho = np.sqrt(Nvar_max /Nvar_min)
@@ -93,10 +93,10 @@ print("Noise Median: ",NMn,"\n")
 noise_var = NoiseVariance
 start_task = 0
 end_task = 7
-start_signal = 4000
-end_signal = 8000
-segment_size = 1000
-segment_shift= 500
+start_signal = 4000 #Begging of conscious signal = 4000ms 
+end_signal = 8000 #End of conscious signal = 8000ms
+segment_size = 1000 #Size of each EEG signal segment = 1000ms
+segment_shift= 500 # Time difference between segments = 500ms
 SNR_All = Calc_SNR(noise_var,start_task,end_task,start_signal,end_signal,segment_size,segment_shift)
 print("SNR: ",SNR_All,"\n")
 

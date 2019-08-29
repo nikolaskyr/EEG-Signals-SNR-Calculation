@@ -14,15 +14,19 @@ import scipy.stats as stats
 
 
 fsampl = 1000 # Sampling frequency
-t_step =1000 # time step in ms
-t_start = 4000 # start time in ms
-A_gain = 50
-mVolts=1000
-microV=1000000
+t_step =4000 # time step or segment size in ms 
+t_start = 4000 # start time of segment in ms
+A_gain = 50 # Gain of the EEG Amplifier
+mVolts=1000 #1V = 1000mV
+microV=1000000 #1V = 1000000uV
 
-data_in=np.loadtxt('Experiments/Task1.csv')
+"""
+Specify EEG file name
+"""
+data_in=np.loadtxt('Experiments/Task7.csv')
 data=data_in*microV/A_gain  #*mVolts/A_gain
 s_size=len(data)   # number of signal samples
+
 """
 Plot the unfiltered EEG signal and its spectrum
 """
@@ -34,6 +38,10 @@ plt.ylabel('Amplitude (μV)')
 plt.grid(which='both', axis='both')
 plt.plot(ks,data)
 plt.show()
+
+"""
+Plot the spectrum of the unfiltered EEG signal and its spectrum
+"""
 
 mask2=np.fft.fft(data)
 plt.figure(2)
@@ -54,7 +62,7 @@ for i in range(len(data)):
     f_signal[i] = FilterMains.filter(data[i])
 
 """
-Plot the filtered EEG signal and its spectrum
+Plot the 50Hz filtered EEG signal and its spectrum
 """
 plt.figure(3)
 plt.title('50Hz Filtered EEG Signal')
@@ -101,6 +109,9 @@ plot_fmax=40  #maximum plot frequency
 plt.plot(kfp[0:int(plot_fmax*psize/fsampl)],abs((mask2[0:int(plot_fmax*psize/fsampl)]/psize)))   #display up to 40Hz
 plt.show()
 
+"""
+Bandpass filter the EEG signal 8Hz to 12Hz
+"""
 f_signalbp = np.zeros(s_size) #Initialize array to store the filtered samples
 #FilterAlpha = IIR2Filter(10,[7,13],'bandpass',design='cheby1',rp=2,fs = fsampl)     
 FilterAlpha = IIR2Filter(10,[8,12],'bandpass',design='butter',rp=2,fs = fsampl)      
@@ -109,7 +120,7 @@ for i in range(len(data)):
 
 
 """
-Plot the filtered EEG signal and its spectrum
+Plot the Bandpass filtered EEG signal and its spectrum
 """
 plt.figure(7)
 plt.title('Bandpass Filtered EEG Signal')
@@ -129,7 +140,8 @@ plt.plot(kf,abs(mask2))
 plt.show()  
 
 """
-Plot part of the filtered EEG signal and its spectrum
+Plot a segment of the bandpass filtered EEG signal and its spectrum
+To set the plot range change t_step and t_start at the beggining of the program
 """
 
 psize = int(t_step*fsampl/1000)  #/fsampl   # size of partial buffer
